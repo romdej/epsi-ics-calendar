@@ -45,9 +45,9 @@ const parsePlanning = ( source ) => {
 		const hours = element.querySelector( '.TChdeb' ).innerHTML.split( ' - ' );
 
 		const event = {
-			start: moment( `${day} ${hours[0]}` ).format( 'YYYY-M-D-H-m' ).split( "-" ),
-			end: moment( `${day} ${hours[1]}` ).format( 'YYYY-M-D-H-m' ).split( "-" ),
-			startType:"local",
+			start: moment( `${day} ${hours[0]}`, undefined, ).utc().format( 'YYYY-M-D-H-m' ).split( "-" ),
+			end: moment( `${day} ${hours[1]}` ).utc().format( 'YYYY-M-D-H-m' ).split( "-" ),
+			startType:"utc",
 			title: element.querySelector( '.TCase' ).querySelector( '.TCase' ).innerHTML,
 			description: element.querySelector( '.TCProf' ).innerHTML.replace( /<br ?\/?>/g, '\n' ),
 			location: element.querySelector( '.TCSalle' ).innerHTML
