@@ -12,6 +12,7 @@
     "express": "^4.16.4",
     "ics": "^2.13.1",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
     "node-html-parser": "^1.1.12",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
