@@ -1,6 +1,6 @@
 const request = require( 'request-promise' );
 const ics = require( 'ics' );
-const moment = require('moment-timezone');
+const moment = require('moment');
 const HTMLParser = require( 'node-html-parser' );
 
 
@@ -45,8 +45,9 @@ const parsePlanning = ( source ) => {
 		const hours = element.querySelector( '.TChdeb' ).innerHTML.split( ' - ' );
 
 		const event = {
-			start: moment.tz( `${day} ${hours[0]}`, 'Europe/Paris' ).format( 'YYYY-M-D-H-m' ).split( "-" ),
-			end: moment.tz( `${day} ${hours[1]}`, 'Europe/Paris' ).format( 'YYYY-M-D-H-m' ).split( "-" ),
+			start: moment( `${day} ${hours[0]}` ).format( 'YYYY-M-D-H-m' ).split( "-" ),
+			end: moment( `${day} ${hours[1]}` ).format( 'YYYY-M-D-H-m' ).split( "-" ),
+			startType:"local",
 			title: element.querySelector( '.TCase' ).querySelector( '.TCase' ).innerHTML,
 			description: element.querySelector( '.TCProf' ).innerHTML.replace( /<br ?\/?>/g, '\n' ),
 			location: element.querySelector( '.TCSalle' ).innerHTML
@@ -68,8 +69,6 @@ const convertEventsToICS = ( events ) => (
 
 module.exports.createAgenda = async ( req, res, options = {} ) => {
 	const {login, serverId = "i"} = options;
-
-	console.log(serverId);
 
 	if ( ! login ) {
 		res.end( 'You should provide login' );

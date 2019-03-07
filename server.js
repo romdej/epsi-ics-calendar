@@ -10,4 +10,5 @@ app.get( '/agenda', ( req, res ) => {
 	} );
 } );
 
+process.env.TZ = 'Europe/Paris';
 app.listen( 4000 );
