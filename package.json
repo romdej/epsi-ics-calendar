@@ -1,0 +1,19 @@
+{
+  "name": "epsi-ics-calendar",
+  "version": "0.0.1",
+  "author": "Romain Dejoux romain.dejoux38@gmail.com",
+  "description": "Permet de récupérer un flux ICS correspondant à l'emploi du temps d'une personne selon son login.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "ics": "^2.13.1",
+    "moment": "^2.24.0",
+    "node-html-parser": "^1.1.12",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
